@@ -1,0 +1,1 @@
+DATABASE_URL=psql://postgres:password@postgres:5432/music_db
