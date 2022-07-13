@@ -44,7 +44,7 @@ body.json:
 | _Удалить трек из избранного по id_  | DELETE - http://127.0.0.1:8000/catalog/track/<int:pk>/favorite    | 
 | _Добавить треки в избранное по id_  | POST - http://127.0.0.1:8000/catalog/track/favorite?id = <int:pk>,<int:pk>   | 
 | _Удалить треки из избранного по id_  | DELETE - http://127.0.0.1:8000/catalog/track/<int:pk>/favorite    | 
-| _Удалить трек из избранного по id_  | DELETE - http://127.0.0.1:8000/catalog/track/favorite?id = <int:pk>,<int:pk>   |
+| _Добавить треки из избранного по id_  | POST - http://127.0.0.1:8000/catalog/track/favorite?id = <int:pk>,<int:pk>   |
 | _Просмотреть подборки_  | GET - http://127.0.0.1:8000/catalog/selection/     | 
 | _Просмотреть подборку по id_  | GET - http://127.0.0.1:8000/catalog/selection/<int:pk>/     | 
 | _Удалить трек из подборки по id_  | DELETE - http://127.0.0.1:8000/catalog/track/<int:pk>/delete/    | 
