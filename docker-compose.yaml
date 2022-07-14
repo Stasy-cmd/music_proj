@@ -2,8 +2,7 @@ version: "3.9"
 
 services:
   api:
-    build:
-      context: .
+    image: dwayneward/music_prj:version1
     ports:
       - "8000:8000"
     depends_on:
@@ -15,8 +14,7 @@ services:
       - ./.docker_env:/app/.env
       - ./django_media:/app/django_media
   migrations:
-    build:
-      context: .
+    image: dwayneward/music_prj:version1
     depends_on:
       postgres:
         condition: service_started
