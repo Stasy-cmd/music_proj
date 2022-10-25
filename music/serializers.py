@@ -24,16 +24,19 @@ class TrackSerializer(serializers.ModelSerializer):
 
 
 class StaredTrackSerializer(serializers.ModelSerializer):
-    stared_user = UserSerializer(many=True)
-
     class Meta:
         model = Track
         read_only_fields = ('id',)
         fields = (
             'id',
             'name',
+            'author',
+            'release_date',
+            'genre',
+            'duration_in_seconds',
+            'album',
             'logo',
-            'stared_user',
+            'track_file',
         )
 
 

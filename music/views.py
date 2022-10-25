@@ -1,3 +1,4 @@
+from django.http import JsonResponse
 from rest_framework import permissions
 from rest_framework.generics import CreateAPIView, UpdateAPIView, ListAPIView, RetrieveAPIView, \
     DestroyAPIView, get_object_or_404
@@ -8,7 +9,7 @@ from rest_framework.views import APIView
 
 from music.models import Track, Selection
 from music.permissions import SelectionEditPermission
-from music.serializers import SelectionDetailSerializer, SelectionSerializer, TrackSerializer
+from music.serializers import SelectionDetailSerializer, SelectionSerializer, TrackSerializer, StaredTrackSerializer
 
 
 class TrackView(ListAPIView):
@@ -42,6 +43,16 @@ class StaredTrackView(APIView):
             track.stared_user.remove(request.user)
             return Response({'detail': 'User removed from track'})
         return Response({'detail': bad_request_message})
+
+
+class StaredTracksListView(ListAPIView):
+    model = Track
+    serializer_class = StaredTrackSerializer
+    permission_classes = [IsAuthenticated, ]
+
+    def get_queryset(self):
+        queryset = Track.objects.filter(stared_user=self.request.user)
+        return queryset
 
 
 class StaredTracksView(APIView):

@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   api:
-    image: dwayneward/music_prj:version1
+    image: dwayneward/music_prj:version2
     ports:
       - "8000:8000"
     depends_on:
@@ -14,7 +14,7 @@ services:
       - ./.docker_env:/app/.env
       - ./django_media:/app/django_media
   migrations:
-    image: dwayneward/music_prj:version1
+    image: dwayneward/music_prj:version2
     depends_on:
       postgres:
         condition: service_started
@@ -26,8 +26,8 @@ services:
     environment:
       POSTGRES_PASSWORD: password
       POSTGRES_DB: music_db
-    ports:
-      - "5432:5432"
+    expose:
+      - "5432"
     healthcheck:
       test: [ "CMD-SHELL", "pg_isready -U postgres" ]
       interval: 5s
